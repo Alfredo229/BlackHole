@@ -14,36 +14,26 @@ for(i=0; i<13; i++){
 	CombatTable[i] = new Array(2);
 }
 
+//testArray = [[[0,1],[2,3]]];
+
 //Bad
-CombatTable[0,0] = new Array(3,2,2,2,1,1,0,0,0,0);
-CombatTable[0,1] = new Array(9,10,11,12,14,16,18,99,99,99);
-CombatTable[1,0] = new Array(3,3,2,2,2,1,0,0,0,0);
-CombatTable[1,1] = new Array(8,9,10,11,12,14,16,18,99,99);
-CombatTable[2,0] = new Array(4,3,2,2,2,1,0,0,0,0);
-CombatTable[2,1] = new Array(7,8,9,10,11,12,14,16,18,99);
-CombatTable[3,0] = new Array(4,3,3,2,2,1,0,0,0,0);
-CombatTable[3,1] = new Array(6,7,8,9,10,11,12,14,16,18);
-CombatTable[4,0] = new Array(4,3,3,2,2,2,1,0,0,0);
-CombatTable[4,1] = new Array(5,6,7,8,9,10,11,12,14,16);
-CombatTable[5,0] = new Array(5,4,3,3,2,2,1,0,0,0);
-CombatTable[5,1] = new Array(4,5,6,7,8,9,10,11,12,14);
-CombatTable[6,0] = new Array(5,4,4,3,2,2,1,0,0,0);
-CombatTable[6,1] = new Array(3,4,5,6,7,8,9,10,11,12);
-CombatTable[7,0] = new Array(5,5,4,4,3,2,2,1,0,0);
-CombatTable[7,1] = new Array(2,3,4,5,6,7,8,9,10,11);
-CombatTable[8,0] = new Array(6,5,5,4,4,3,2,1,0,0);
-CombatTable[8,1] = new Array(1,2,3,4,5,6,7,8,9,10);
-CombatTable[9,0] = new Array(6,6,5,5,4,4,3,2,0,0);
-CombatTable[9,1] = new Array(0,1,2,3,4,5,6,7,8,9);
-CombatTable[10,0] = new Array(8,7,6,6,5,5,4,3,2,0);
-CombatTable[10,1] = new Array(0,0,1,2,3,4,5,6,7,8);
-CombatTable[11,0] = new Array(99,8,7,7,6,6,5,4,3,0);
-CombatTable[11,1] = new Array(0,0,0,1,2,3,4,5,6,7);
-CombatTable[12,0] = new Array(99,99,8,8,7,6,5,4,3,0);
-CombatTable[12,1] = ["0","0","0","0","1","2","3","4","5","6"];
+CombatTable[0] = [[3,2,2,2,1,1,0,0,0,0],[9,10,11,12,14,16,18,99,99,99]];
+CombatTable[1] = [[3,3,2,2,2,1,0,0,0,0],[8,9,10,11,12,14,16,18,99,99]];
+CombatTable[2] = [[4,3,2,2,2,1,0,0,0,0],[7,8,9,10,11,12,14,16,18,99]];
+CombatTable[3] = [[4,3,3,2,2,1,0,0,0,0],[6,7,8,9,10,11,12,14,16,18]];
+CombatTable[4] = [[4,3,3,2,2,2,1,0,0,0],[5,6,7,8,9,10,11,12,14,16]];
+CombatTable[5] = [[5,4,3,3,2,2,1,0,0,0],[4,5,6,7,8,9,10,11,12,14]];
+CombatTable[6] = [[5,4,4,3,2,2,1,0,0,0],[3,4,5,6,7,8,9,10,11,12]];
+CombatTable[7] = [[5,5,4,4,3,2,2,1,0,0],[2,3,4,5,6,7,8,9,10,11]];
+CombatTable[8] = [[6,5,5,4,4,3,2,1,0,0],[1,2,3,4,5,6,7,8,9,10]];
+CombatTable[9] = [[6,6,5,5,4,4,3,2,0,0],[0,1,2,3,4,5,6,7,8,9]];
+CombatTable[10] = [[8,7,6,6,5,5,4,3,2,0],[0,0,1,2,3,4,5,6,7,8]];
+CombatTable[11] = [[99,8,7,7,6,6,5,4,3,0],[0,0,0,1,2,3,4,5,6,7]];
+CombatTable[12] = [[99,99,8,8,7,6,5,4,3,0],[0,0,0,0,1,2,3,4,5,6]];
 //Good
 
 //For display, skill shots and such
+
 /*
 function PullNumber(myCount){
 	myBuffer = "";
@@ -61,6 +51,9 @@ function PullNumber(myCount){
 		if(myPull > myValue)
 			myValue = myPull;
 	}
+	myValue++;
+	if(myValue == 10)
+		myValue = 0;
 	document.getElementById("Chiffres").innerHTML = myValue;
 }
 
@@ -84,16 +77,12 @@ function HitMe(){
 	console.log("Read my HP " + myHp);
 	console.log("Read his HP " + hisHp);
 	console.log("Read Difficulty " + Difficulty);
-
 	SkillCheck = document.getElementById("Agility").value - document.getElementById("EnnemyAgility").value;
-
-//SkillIndex
 	if(SkillCheck > 11)
 		SkillCheck = 11;
 	if(SkillCheck < -11)
 		SkillCheck = -11;
 	console.log("Skill Check: " + SkillCheck);
-	SkillCheck *= -1;
 	SkillIndex = Math.ceil(SkillCheck / 2);
 	SkillIndex += 5;
 	console.log("Skill Index: " + SkillIndex);
@@ -101,22 +90,25 @@ function HitMe(){
 		SkillIndex++;
 	console.log("Skill Index: " + SkillIndex);
 	}
-
 	theHit = PullCombatNumber(Difficulty);
 	console.log("TheHit " + theHit);
-
-//******************HERE*******************
-
-	myDamage = CombatTable[SkillIndex,0];
-	hisDamage = CombatTable[SkillIndex,1];
-
+	theHit = Math.abs(theHit - 9);
+	console.log("TheHit " + theHit);
+	myDamage = CombatTable[SkillIndex][0][theHit];
+	hisDamage = CombatTable[SkillIndex][1][theHit];
 	console.log("myDamage: " + myDamage);
 	console.log("hisDamage: " + hisDamage);
+	myHp -= hisDamage;
+	hisHp -= myDamage;
+	console.log("My HP: " + myHp);
+	console.log("His HP: " + hisHp);
+	document.getElementById("PlayerHP").value = myHp;
+	document.getElementById("EnnemyHP").value = hisHp;
 
-	console.log(CombatTable[12,1,2]);
-	console.log(CombatTable[12,0,2]);
+	//Done
 
-//******************HERE*******************
+	//Works, array is read backwards though.
+	//I'll just log the HP and be done for now.
 
 	/*Ok so.... There is a problem with the table. 
 	It reads the whole section isntead of giving me an integer (Grrr)*/
@@ -182,6 +174,14 @@ function LoadTheSheet(){
 	let myArray = allCookies.split(';');
 	for(i = 0; i < 15; i++)
 	console.log(myArray[i]);
+}
+
+function debugMe(){
+	testArray = [[[0,1],[2,3]]];
+	console.log("Test: " + testArray[0][0][1]);
+	console.log("Test: " + testArray[0][0][0]);
+	console.log("Test: " + testArray[0][1][1]);
+	console.log("Test: " + testArray[0][1][0]);
 }
 
 function testingCookie01(){
@@ -337,7 +337,7 @@ Endurance Ennemi<br>
 <input type="text" id="EnnemyHP" value="99"><br>
 <br>
 Difficulté<br>
-<input type="text" id="theDifficulty" value="2"><br>
+<input type="text" id="theDifficulty" value="6"><br>
 <input type="button" value="Fight Me!" onclick="HitMe()"><br>
 <br>
 </form>
@@ -358,9 +358,9 @@ Difficulté<br>
 
 Table du hasard<br>
 <form>
+<input type="button" value="Click for 6" onclick="PullNumber(6)">
 <input type="button" value="Click for 3" onclick="PullNumber(3)">
 <input type="button" value="Click for 2" onclick="PullNumber(2)">
-<input type="button" value="Click for 1" onclick="PullNumber(1)">
 </form>
 <p id="Chiffres"></p>
 <br>
@@ -369,6 +369,8 @@ Table du hasard<br>
 <div style="background-color:white;width:200px;text-align:center;margin:auto">
 <form>
 <input type=textarea" id="SaveField" rows="5">
+<br>
+<input type="button" value="Debug" onClick="debugMe()"></input>
 </form>
 </div>
 
