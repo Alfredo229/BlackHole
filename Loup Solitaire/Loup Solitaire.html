@@ -1,0 +1,335 @@
+<html>
+<head>
+<title>Feuille de jeu pour les livres Loup Solitaire première section</title>
+<script>
+//******************************
+//******************************
+//*********Javascript***********
+//******************************
+//******************************
+
+CombatTable = new Array(13);
+
+for(i=0; i<13; i++){
+	CombatTable[i] = new Array(2);
+}
+
+CombatTable[0,0] = new Array(3,2,2,2,1,1,0,0,0,0);
+CombatTable[0,1] = new Array(9,10,11,12,14,16,18,99,99,99);
+CombatTable[1,0] = new Array(3,3,2,2,2,1,0,0,0,0);
+CombatTable[1,1] = new Array(8,9,10,11,12,14,16,18,99,99);
+CombatTable[2,0] = new Array(4,3,2,2,2,1,0,0,0,0);
+CombatTable[2,1] = new Array(7,8,9,10,11,12,14,16,18,99);
+CombatTable[3,0] = new Array(4,3,3,2,2,1,0,0,0,0);
+CombatTable[3,1] = new Array(6,7,8,9,10,11,12,14,16,18);
+CombatTable[4,0] = new Array(4,3,3,2,2,2,1,0,0,0);
+CombatTable[4,1] = new Array(5,6,7,8,9,10,11,12,14,16);
+CombatTable[5,0] = new Array(5,4,3,3,2,2,1,0,0,0);
+CombatTable[5,1] = new Array(4,5,6,7,8,9,10,11,12,14);
+CombatTable[6,0] = new Array(5,4,4,3,2,2,1,0,0,0);
+CombatTable[6,1] = new Array(3,4,5,6,7,8,9,10,11,12);
+CombatTable[7,0] = new Array(5,5,4,4,3,2,2,1,0,0);
+CombatTable[7,1] = new Array(2,3,4,5,6,7,8,9,10,11);
+CombatTable[8,0] = new Array(6,5,5,4,4,3,2,1,0,0);
+CombatTable[8,1] = new Array(1,2,3,4,5,6,7,8,9,10);
+CombatTable[9,0] = new Array(6,6,5,5,4,4,3,2,0,0);
+CombatTable[9,1] = new Array(0,1,2,3,4,5,6,7,8,9);
+CombatTable[10,0] = new Array(8,7,6,6,5,5,4,3,2,0);
+CombatTable[10,1] = new Array(0,0,1,2,3,4,5,6,7,8);
+CombatTable[11,0] = new Array(99,8,7,7,6,6,5,4,3,0);
+CombatTable[11,1] = new Array(0,0,0,1,2,3,4,5,6,7);
+CombatTable[12,0] = new Array(99,99,8,8,7,6,5,4,3,0);
+CombatTable[12,1] = new Array(0,0,0,0,1,2,3,4,5,6);
+
+//For display, skill shots and such
+/*
+function PullNumber(myCount){
+	myBuffer = "";
+	for(i=0; i < myCount; i++){
+		myValue = Math.floor(10 * Math.random());
+		myBuffer = myBuffer + myValue + ' ';
+	}
+	document.getElementById("Chiffres").innerHTML = myBuffer;
+}
+*/
+function PullNumber(myCount){
+	myValue = 0;
+	for(i=0; i < myCount; i++){
+		myPull = Math.floor(10 * Math.random());
+		if(myPull > myValue)
+			myValue = myPull;
+	}
+	document.getElementById("Chiffres").innerHTML = myValue;
+}
+
+//For combat returns a number instead of writing to the webpage
+//Nine is bad and zero is good. But one is like... I forgot
+function PullCombatNumber(myCount){
+	myValue = 0;
+	for(i=0; i < myCount; i++){
+		myPull = Math.floor(10 * Math.random());
+		if(myPull > myValue)
+			myValue = myPull;
+	}
+	return(myValue);
+}
+
+function HitMe(){
+	console.log('Found');
+	Difficulty = document.getElementById("theDifficulty").value;
+	myHp = document.getElementById("PlayerHP").value;
+	hisHp = document.getElementById("EnnemyHP").value;
+	console.log("Read my HP " + myHp);
+	console.log("Read his HP " + hisHp);
+	console.log("Read Difficulty " + Difficulty);
+
+	SkillCheck = document.getElementById("Agility").value - document.getElementById("EnnemyAgility").value;
+	if(SkillCheck <= 0){
+		SkillCheck = Math.abs(SkillCheck);
+		console.log("Skill Check: " + SkillCheck);
+		SkillIndex = Math.round(SkillCheck / 2);
+		console.log('Skill Index '+SkillIndex);
+	}else{
+	}
+
+	theHit = PullCombatNumber(Difficulty);
+	console.log("TheHit " + theHit);
+
+	console.log();
+
+	//Needs to seek the tables
+	//I logged them from top to bottom. Top is bad, i think.
+	//Yeah....
+	//So i would just log the..
+	//Tired i guess.
+
+	//The numbers scale weird
+	//I need to scale the skill check to an index for the tables
+	//Zero divided to two is zero.
+	//Section is done.
+
+	//Thinking of adding a background
+	//Cookies...
+	//Divs, colorful
+	//Needs to fix them floatz
+	//Later
+}
+
+//*************************************
+//***********COOKIE SECTION************
+//*************************************
+
+
+function Surprise(){
+	console.log('Save the game');
+	console.log(document.cookie);
+	document.cookie = "Number=88;love=fake;";
+	document.cookie = "love=true;";
+	document.cookie = "myTest01= Bye!";
+	console.log(document.cookie);
+}
+
+function SneakyShhh(){
+	document.cookie = "name=Mathieu;";
+//	document.cookie = "expires=Thu, 01 Jan 2026 00:00:00 UTC";
+}
+
+function LoadTheSheet(){
+	console.log('Load the sheet');
+	let allCookies = decodeURIComponent(document.cookie);
+	let myArray = allCookies.split(';');
+	for(i = 0; i < 15; i++)
+	console.log(myArray[i]);
+}
+
+function testingCookie01(){
+
+/*******************VERBOSE SNIP*****************************
+
+//	console.log();
+//	Toss a couple of cookie defenitions and look up the syntax. Overwriting eachother. See what is read.
+
+	console.log('Testing cookies 01');
+//	document.cookie = "username=;myTest02=Hello?;";
+	document.cookie = 8;
+	console.log(document.cookie);
+	console.log(document.cookie[0]);
+	console.log(document.cookie.value);
+
+	console.log('Testing cookies 02');
+	let load10 = decodeURIComponent(document.cookie);
+	let load11 = load10.split(';');
+	console.log(load11);
+	console.log(load11[0]);
+
+	console.log('Comment00');
+	console.log(document.cookie);
+	console.log(toString(document.cookie));
+	let myTest00 = document.cookie;
+	console.log(myTest00[0]);
+	console.log(myTest00);
+	console.log(myTest00.value);
+	console.log(myTest00.myTest01);
+
+	console.log(myTest00.myTest01);
+	console.log(toString(myTest00.myTest01));
+//	console.log(myTest00.myTest01.value);
+
+	console.log('Comment02');
+	let myTest02 = 'myTest01=';
+	console.log(myTest02);
+
+	console.log('Comment03');
+	let load00 = decodeURIComponent(document.cookie);
+	console.log(load00);
+	let load01 = load00.split(';');
+	console.log(load01);
+	console.log(load01.myTest01);
+
+	console.log('Comment04');
+	console.log(load01.length);
+	console.log(toString(load01));
+	console.log(toString(load01.value));
+	console.log(toString(load01.myTest01));
+
+	console.log('Comment05');
+	console.log(load01[0]);
+
+	console.log('Comment06');
+	let myTest10 = 10;
+	console.log(myTest10);
+
+	//omg, i'm thinking a cookie blocker.
+	//.....
+	//check on that later.
+	//*******************************************************************
+	//Yeah.
+
+*******************VERBOSE SNIP******************************/
+
+	document.cookie = "name=MAthieu";
+}
+
+//*********************************<br>
+//*********************************<br>
+//*************HTML****************<br>
+//*********************************<br>
+//*********************************<br>
+
+</script>
+</head>
+
+<body style="background-image: url('Background.jpg');background-size: cover;" onload="Surprise()" onclose="">
+
+<div style="width:100%;height:10%"></div>
+
+<div style="display:flex;flex-direction:row;justify-content:center" value="flex00">
+
+
+<div style="width:200px;text-align:center;background-color:white">
+
+<form>
+Disciplines Kai<br>
+<input type="text" id="Kai00"></input><br>
+<input type="text" id="Kai01"></input><br>
+<input type="text" id="Kai02"></input><br>
+<input type="text" id="Kai03"></input><br>
+<input type="text" id="Kai04"></input><br>
+<br>
+Armes<br>
+<input type="text" id="Weapon00"></input><br>
+<input type="text" id="Weapon01"></input><br>
+<br>
+Objets Spéciaux<br>
+
+</div>
+<div style="background-color:white;width:200px;text-align:center">
+
+
+Sac à dos<br>
+<input type="text" id="Backpack00"></input><br>
+<input type="text" id="Backpack01"></input><br>
+<input type="text" id="Backpack02"></input><br>
+<input type="text" id="Backpack03"></input><br>
+<input type="text" id="Backpack04"></input><br>
+<input type="text" id="Backpack05"></input><br>
+<input type="text" id="Backpack06"></input><br>
+<input type="text" id="Backpack07"></input><br>
+<br>
+Repas<br>
+<input type="text" id="Food"></input><br>
+<br>
+Bourse<br>
+<input type="text" id="Gold"></input><br>
+<br>
+
+</div>
+
+
+<div style="display:flex;flex-direction:column" value="flex01">
+<div style="background-color:white;width:200px;text-align:center">
+
+
+Habilité<br>
+<input type="text" id="Agility"></input><br>
+<br>
+Endurance Maximum/Actuelle<br>
+<input type="text" id="StaminaMax"></input><br>
+<input type="text" id="Stamina"></input><br>
+<br>
+</form>
+
+</div>
+
+<div style="background-color:white;width:200px;text-align:center">
+
+
+Combat<br>
+<br>
+<form>
+Habilité de l'ennemi<br>
+<input type="text" id="EnnemyAgility" value="0"><br>
+Endurance Loup Solitaire<br>
+<input type="text" id="PlayerHP" value="0"><br>
+Endurance Ennemi<br>
+<input type="text" id="EnnemyHP" value="0"><br>
+<br>
+Difficulté<br>
+<input type="text" id="theDifficulty" value="2"><br>
+<input type="button" value="Fight Me!" onclick="HitMe()"><br>
+<br>
+</form>
+<p id="CombatLog"></p>
+<form>
+<input type="button" value="Save" onclick="Surprise()">
+<input type="button" value="Load" onclick="LoadTheSheet()">
+<input type="button" value="Write 00" onclick="testingCookie01()">
+<input type="button" value="Write 01" onclick="SneakyShhh()">
+</form>
+
+</div value="flex01">
+</div value="flex00">
+
+</div>
+<div style="background-color:white;width:200px;text-align:center;margin:auto">
+
+
+Table du hasard<br>
+<form>
+<input type="button" value="Click for 3" onclick="PullNumber(3)">
+<input type="button" value="Click for 2" onclick="PullNumber(2)">
+<input type="button" value="Click for 1" onclick="PullNumber(1)">
+</form>
+<p id="Chiffres"></p>
+<br>
+
+</div>
+<div style="background-color:white;width:200px;text-align:center;margin:auto">
+<form>
+<input type=textarea" id="SaveField" rows="5">
+</form>
+</div>
+
+
+</body>
+</html>
