@@ -14,6 +14,7 @@ for(i=0; i<13; i++){
 	CombatTable[i] = new Array(2);
 }
 
+//Bad
 CombatTable[0,0] = new Array(3,2,2,2,1,1,0,0,0,0);
 CombatTable[0,1] = new Array(9,10,11,12,14,16,18,99,99,99);
 CombatTable[1,0] = new Array(3,3,2,2,2,1,0,0,0,0);
@@ -39,7 +40,8 @@ CombatTable[10,1] = new Array(0,0,1,2,3,4,5,6,7,8);
 CombatTable[11,0] = new Array(99,8,7,7,6,6,5,4,3,0);
 CombatTable[11,1] = new Array(0,0,0,1,2,3,4,5,6,7);
 CombatTable[12,0] = new Array(99,99,8,8,7,6,5,4,3,0);
-CombatTable[12,1] = new Array(0,0,0,0,1,2,3,4,5,6);
+CombatTable[12,1] = ["0","0","0","0","1","2","3","4","5","6"];
+//Good
 
 //For display, skill shots and such
 /*
@@ -84,18 +86,58 @@ function HitMe(){
 	console.log("Read Difficulty " + Difficulty);
 
 	SkillCheck = document.getElementById("Agility").value - document.getElementById("EnnemyAgility").value;
-	if(SkillCheck <= 0){
-		SkillCheck = Math.abs(SkillCheck);
-		console.log("Skill Check: " + SkillCheck);
-		SkillIndex = Math.round(SkillCheck / 2);
-		console.log('Skill Index '+SkillIndex);
-	}else{
+
+//SkillIndex
+	if(SkillCheck > 11)
+		SkillCheck = 11;
+	if(SkillCheck < -11)
+		SkillCheck = -11;
+	console.log("Skill Check: " + SkillCheck);
+	SkillCheck *= -1;
+	SkillIndex = Math.ceil(SkillCheck / 2);
+	SkillIndex += 5;
+	console.log("Skill Index: " + SkillIndex);
+	if(SkillIndex >= 6){
+		SkillIndex++;
+	console.log("Skill Index: " + SkillIndex);
 	}
 
 	theHit = PullCombatNumber(Difficulty);
 	console.log("TheHit " + theHit);
 
-	console.log();
+//******************HERE*******************
+
+	myDamage = CombatTable[SkillIndex,0];
+	hisDamage = CombatTable[SkillIndex,1];
+
+	console.log("myDamage: " + myDamage);
+	console.log("hisDamage: " + hisDamage);
+
+	console.log(CombatTable[12,1,2]);
+	console.log(CombatTable[12,0,2]);
+
+//******************HERE*******************
+
+	/*Ok so.... There is a problem with the table. 
+	It reads the whole section isntead of giving me an integer (Grrr)*/
+
+	//CombatTable
+	//scales from skill -12 to +12 at 0 to 12. Ish.
+	//0 to 12. 13 length. 5 both sides, middle and excess.
+	//fix the skill check for an index, might be done.
+	//0 is uh, him or me, other one isn't.
+
+	//I have my random system 0 to 9. (is good).
+	//Book system goes 1 is bad 0 is good.
+	//Index scales to my system
+	//Tables are just a different label.
+	//SO!!!
+
+	//Skill check gets me an index
+	//Other index is the hit
+	//Hp changes
+	//.....
+	//Go!
 
 	//Needs to seek the tables
 	//I logged them from top to bottom. Top is bad, i think.
@@ -271,7 +313,7 @@ Bourse<br>
 
 
 Habilité<br>
-<input type="text" id="Agility"></input><br>
+<input type="text" id="Agility" value="11"></input><br>
 <br>
 Endurance Maximum/Actuelle<br>
 <input type="text" id="StaminaMax"></input><br>
@@ -288,11 +330,11 @@ Combat<br>
 <br>
 <form>
 Habilité de l'ennemi<br>
-<input type="text" id="EnnemyAgility" value="0"><br>
+<input type="text" id="EnnemyAgility" value="14"><br>
 Endurance Loup Solitaire<br>
-<input type="text" id="PlayerHP" value="0"><br>
+<input type="text" id="PlayerHP" value="99"><br>
 Endurance Ennemi<br>
-<input type="text" id="EnnemyHP" value="0"><br>
+<input type="text" id="EnnemyHP" value="99"><br>
 <br>
 Difficulté<br>
 <input type="text" id="theDifficulty" value="2"><br>
