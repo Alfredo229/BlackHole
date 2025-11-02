@@ -51,6 +51,9 @@ function PullNumber(myCount){
 		if(myPull > myValue)
 			myValue = myPull;
 	}
+	myValue++;
+	if(myValue == 10)
+		myValue = 0;
 	document.getElementById("Chiffres").innerHTML = myValue;
 }
 
@@ -310,7 +313,7 @@ Bourse<br>
 
 
 Habilité<br>
-<input type="text" id="Agility" value=""></input><br>
+<input type="text" id="Agility" value="11"></input><br>
 <br>
 Endurance Maximum/Actuelle<br>
 <input type="text" id="StaminaMax"></input><br>
@@ -327,11 +330,11 @@ Combat<br>
 <br>
 <form>
 Habilité de l'ennemi<br>
-<input type="text" id="EnnemyAgility" value=""><br>
+<input type="text" id="EnnemyAgility" value="14"><br>
 Endurance Loup Solitaire<br>
-<input type="text" id="PlayerHP" value=""><br>
+<input type="text" id="PlayerHP" value="99"><br>
 Endurance Ennemi<br>
-<input type="text" id="EnnemyHP" value=""><br>
+<input type="text" id="EnnemyHP" value="99"><br>
 <br>
 Difficulté<br>
 <input type="text" id="theDifficulty" value="6"><br>
@@ -355,8 +358,9 @@ Difficulté<br>
 
 Table du hasard<br>
 <form>
-<input type="button" value="Click for amount" onclick="PullNumber(6)">
-<input type="button" value="Click for random" onclick="PullNumber(1)">
+<input type="button" value="Click for 6" onclick="PullNumber(6)">
+<input type="button" value="Click for 3" onclick="PullNumber(3)">
+<input type="button" value="Click for 1" onclick="PullNumber(1)">
 </form>
 <p id="Chiffres"></p>
 <br>
