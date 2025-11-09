@@ -233,11 +233,15 @@ break;
                      "17","18","19","20","21","22","23","24");
    break;
 
+  case "P30":
+   myPath = "Pictures29\\";
+   name2 = new Array("Job well done","Stonehenge","CIA","Honor","Walking","Music","Static","Headphones",
+   "Trust","Standing stones","Runes","Justice","Nuclear clock","Love","Meditation","Video game",
+   "God","Highway kinetics","Phone","Sexy","Stop sign","Dance floor","Relationship","Cybermen army");
+   break;
+
   default:
    alert("other");
   break;
  }
- name2 = new Array("Frey","Ur","Thorn","Os","Rad","Ken","Gyfu","Wyn",
-                   "Hagel","Nyd","Isa","Jera","Eoh","Pethro","Eloh","Sigel",
-                   "Tyr","Birch","Eh","Man","Lagu","Ing","Daeg","Odal");
 }
