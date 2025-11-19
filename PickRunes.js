@@ -240,6 +240,13 @@ break;
    "God","Highway kinetics","Phone","Sexy","Stop sign","Dance floor","Relationship","Cybermen army");
    break;
 
+  case "P31":
+   myPath = "Pictures30\\";
+   name2 = new Array("Frey","Ur","Thorn","Os","Rad","Ken","Gyfu","Wyn",
+                     "Hagel","Nyd","Isa","Jera","Eoh","Pethro","Eloh","Sigel",
+                     "Tyr","Birch","Eh","Man","Lagu","Ing","Daeg","Odal");
+   break;
+
   default:
    alert("other");
   break;

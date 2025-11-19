@@ -1,4 +1,4 @@
-//var name2 = new Array(
+var name2 = new Array(
 "Frey",
 "Ur",
 "Thorn",
