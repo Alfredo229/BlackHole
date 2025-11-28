@@ -30,10 +30,16 @@ name2 = new Array(
                    "Hagel","Nyd","Isa","Jera","Eoh","Pethro","Eloh","Sigel",
                    "Tyr","Birch","Eh","Man","Lagu","Ing","Daeg","Odal");
 
- switch(MyString){
-  case "S":
-   myPath = "Runes\\";
-   break;
+switch(MyString){
+	case "S":
+	myPath = "Runes\\";
+	name2 = new Array("Frey","Ur","Thorn","Os","Rad","Ken","Gyfu","Wyn",
+		"Hagel","Nyd","Isa","Jera","Eoh","Pethro","Eloh","Sigel",
+		"Tyr","Birch","Eh","Man","Lagu","Ing","Daeg","Odal");
+	name2 = new Array("Frey, Aries x1","Ur, Cancer x1","Thorn, Libra x1","Os, Capricorn x1","Rad, Aries x2","Ken, Cancer x2","Gyfu, Libra x2","Wyn, Capricorn x2",
+		"Hagel, Taurus x1","Nyd, Leo x1","Isa, Scorpio x1","Jera, Aquarius x1","Eoh, Taurus x2","Pethro, Leo x2","Eloh, Scorpio x2","Sigel, Aquarius x2",
+		"Tyr, Gemini x1","Birch, Virgo x1","Eh, Sagitarius x1","Man, Pisces x1","Lagu, Gemini x2","Ing, Virgo x2","Daeg, Sagitarius x2","Odal, Pisces x2");
+	break;
 
   case "P1":
    myPath = "Pictures\\";
@@ -242,9 +248,9 @@ break;
 
   case "P31":
    myPath = "Pictures30\\";
-   name2 = new Array("Frey","Ur","Thorn","Os","Rad","Ken","Gyfu","Wyn",
-                     "Hagel","Nyd","Isa","Jera","Eoh","Pethro","Eloh","Sigel",
-                     "Tyr","Birch","Eh","Man","Lagu","Ing","Daeg","Odal");
+   name2 = new Array("Frey, Aries x1","Ur, Cancer x1","Thorn, Libra x1","Os, Capricorn x1","Rad, Aries x2","Ken, Cancer x2","Gyfu, Libra x2","Wyn, Capricorn x2",
+                     "Hagel, Taurus x1","Nyd, Leo x1","Isa, Scorpio x1","Jera, Aquarius x1","Eoh, Taurus x2","Pethro, Leo x2","Eloh, Scorpio x2","Sigel, Aquarius x2",
+                     "Tyr, Gemini x1","Birch, Virgo x1","Eh, Sagitarius x1","Man, Pisces x1","Lagu, Gemini x2","Ing, Virgo x2","Daeg, Sagitarius x2","Odal, Pisces x2");
    break;
 
   default:
