@@ -253,6 +253,10 @@ break;
                      "Tyr, Gemini x1","Birch, Virgo x1","Eh, Sagitarius x1","Man, Pisces x1","Lagu, Gemini x2","Ing, Virgo x2","Daeg, Sagitarius x2","Odal, Pisces x2");
    break;
 
+  case "P32":
+   myPath = "Pictures31\\";
+   break;
+
   default:
    alert("other");
   break;
