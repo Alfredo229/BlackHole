@@ -1,0 +1,53 @@
+<html>
+<head></head>
+<body onLoad="init()">
+<form>
+<table><tr>
+<td><img id="Picture00" src="Runes/blank.jpg"></img></td>
+<td><img id="Picture01" src="Runes/blank.jpg"></img></td>
+</tr>
+<tr>
+<td><input type="text" id="Text00" value="1200"></td>
+<td><input type="text" id="Text01" value="800"></td>
+</tr>
+</table>
+<input type="button" value="Toggle Running" onClick="toggleMe()"></input>
+</form>
+</body>
+<script>
+running = 0;
+
+function toggleMe(){
+	if(running == 0){
+		running = 1;
+		init();
+	}else{
+		running = 0;
+	}
+}
+
+function init(){
+	flipImage("Picture00","Text00");
+	flipImage("Picture01","Text01");
+}
+
+function flipImage(pictureID,timerID){
+	myString = '';
+
+	newPull = Math.floor(Math.random()*24);
+	newPull++;
+	if(newPull < 10){
+		myString = 'Runes/0' + newPull + '.jpg';
+	}else{
+		myString = 'Runes/' + newPull + '.jpg';
+	}
+	document.getElementById(pictureID).src = myString;
+
+//	stringOne = 'flipImage("' +pictureID+ '","' +timerID+ '")';
+	stringTwo = document.getElementById(timerID).value;
+
+	if(running == 1)
+		setTimeout('flipImage("' +pictureID+ '","' +timerID+ '")' ,stringTwo);
+}
+</script>
+</html>
