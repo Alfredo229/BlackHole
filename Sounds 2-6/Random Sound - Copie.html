@@ -3,21 +3,16 @@
 <title>Random Binary Chords</title>
 </head>
 <script>
-
 ID00 = 0;
 ID01 = 0;
-running = 0;
-
 playing = new Audio();
+running = 0;
 playingId00 = 0;
 playingId01 = 0;
-playback00 = new Audio();
-playback01 = new Audio();
-
 timer = 1000;
 
-index00 = 0;
-index01 = 0;
+playback00 = new Audio();
+playback01 = new Audio();
 
 myFiles = new Array();
 for(i=0; i<4; i++){
@@ -38,19 +33,21 @@ function start(){
 
 function loop00(){
 	if(running == 1)
-		ID00 = setTimeout('loop00()',timer00);
-	document.getElementById("myAudio"+index00).pause();
-	index00 = Math.floor(Math.random() * 4);
-	document.getElementById("myAudio"+index00).play();
+		ID00 = setTimeout(loop00,timer00);
+	playback00.pause();
+	playingId00 = Math.floor(Math.random() * 4);
+	playback00 = new Audio(myFiles[playingId00].src);
+	playback00.play();
 }
 
 //OFF
 function loop01(){
 	if(running == 1)
-		ID01 = setTimeout('loop01()',timer01);
-	document.getElementById("myAudio"+index01).pause();
-	index01 = Math.floor(Math.random() * 4);
-	document.getElementById("myAudio"+index01).play();
+		ID01 = setTimeout(loop01,timer01);
+	playback01.pause();
+	playingId01 = Math.floor(Math.random() * 4);
+	playback01 = new Audio(myFiles[playingId01].src);
+	playback01.play();
 }
 
 function stop(){
@@ -64,13 +61,11 @@ function stop(){
 <form>
 	<input type="button" value="Start" onClick="start()"></input>
 	<input type="button" value="Stop" onClick="stop()"></input>
+	<input type="button" value="Testing" onClick=""></input>
 	<input type="text" value="1000" id="theDelay00"></input>
-	<input type="text" value="1333" id="theDelay01"></input>
+	<input type="text" value="500" id="theDelay01"></input>
 </form>
-<audio id="myAudio0" src="2.mp3"></audio>
-<audio id="myAudio1" src="3.mp3"></audio>
-<audio id="myAudio2" src="4.mp3"></audio>
-<audio id="myAudio3" src="5.mp3"></audio>
+<audio id="myAudio" src="2.mp3" onLoad="this.play()"></audio>
 
 </body>
 </html>

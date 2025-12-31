@@ -8,7 +8,7 @@
 </tr>
 <tr>
 <td><input type="text" id="Text00" value="1200"></td>
-<td><input type="text" id="Text01" value="800"></td>
+<td><input type="text" id="Text01" value="0"></td>
 </tr>
 </table>
 <input type="button" value="Toggle Running" onClick="toggleMe()"></input>
@@ -46,7 +46,7 @@ function flipImage(pictureID,timerID){
 //	stringOne = 'flipImage("' +pictureID+ '","' +timerID+ '")';
 	stringTwo = document.getElementById(timerID).value;
 
-	if(running == 1)
+	if(running == 1 && stringTwo != 0)
 		setTimeout('flipImage("' +pictureID+ '","' +timerID+ '")' ,stringTwo);
 }
 </script>
