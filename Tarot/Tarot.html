@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Tarot minor arcanum</title>
+</head>
+<script>
+function pullCard(){
+	myPull = Math.floor(Math.random()*40);
+	document.getElementById("myOutput").src = myPull + '.jpg';
+}
+</script>
+<body>
+<h1>Tarot minor arcanum</h1>
+<h2>Credits to Copilot for the images. I figured out the numbers and the code.</h2>
+<h2>So Tarot, minor arcanums. I dropped the kings, queens, squires and knights. It makes the interpretation all that much lighter. It relates to the elements in the context of astrology and to the numbers in numerology. Or just plain factors. I think i like it.</h2>
+<button onClick="pullCard()">Pull a card</button>
+<br><br>
+<img id="myOutput" src="40.jpg"></img>
+</body>
+</html>
