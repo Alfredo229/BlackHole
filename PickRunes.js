@@ -41,6 +41,10 @@ switch(MyString){
 		"Tyr, Gemini","Birch, Gemini","Eh, Virgo","Man, Virgo","Lagu, Sagitarius","Ing, Sagitarius","Daeg, Pisces","Odal, Pisces");
 	break;
 
+	case "Rock":
+		myPath = "Rocks\\";
+		break;
+
   case "P1":
    myPath = "Pictures\\";
    break;
@@ -262,8 +266,8 @@ break;
   break;
  }
 
-name2 = new Array("Frey, Aries","Ur, Aries","Thorn, Cancer","Os, Cancer","Rad, Balance","Ken, Balance","Gyfu, Capricorn","Wyn, Capricorn",
-	"Hagel, Taurus","Nyd, Taurus","Isa, Leo","Jera, Leo","Eoh, Scorpio","Pethro, Scorpio","Eloh, Aquarius","Sigel, Aquarius",
-	"Tyr, Gemini","Birch, Gemini","Eh, Virgo","Man, Virgo","Lagu, Sagitarius","Ing, Sagitarius","Daeg, Pisces","Odal, Pisces");
+//name2 = new Array("Frey, Aries","Ur, Aries","Thorn, Cancer","Os, Cancer","Rad, Balance","Ken, Balance","Gyfu, Capricorn","Wyn, Capricorn",
+//	"Hagel, Taurus","Nyd, Taurus","Isa, Leo","Jera, Leo","Eoh, Scorpio","Pethro, Scorpio","Eloh, Aquarius","Sigel, Aquarius",
+//	"Tyr, Gemini","Birch, Gemini","Eh, Virgo","Man, Virgo","Lagu, Sagitarius","Ing, Sagitarius","Daeg, Pisces","Odal, Pisces");
 
 }
