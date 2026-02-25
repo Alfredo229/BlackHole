@@ -43,6 +43,12 @@ switch(MyString){
 
 	case "Rock":
 		myPath = "Rocks\\";
+	name2 = new Array("Frey","Ur","Thorn","Os","Rad","Ken","Gyfu","Wyn",
+		"Hagel","Nyd","Isa","Jera","Eoh","Pethro","Eloh","Sigel",
+		"Tyr","Birch","Eh","Man","Lagu","Ing","Daeg","Odal");
+	name2 = new Array("Honor","Famous","Choices","Truth","Healthy","Safe","Hurt","Good",
+		"Angry","Stable","Observant","Fair","Organised","Happiness","Sacrifice","Hope",
+		"Leadership","Creativity","Kindness","Judgement","Courage","Wisdom","Compassion","Willpower");
 		break;
 
   case "P1":
