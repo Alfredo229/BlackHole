@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sweeper</title>
+</head>
+<script>
+Primes = (2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97);
+
+LengthOne = 0;
+LengthTwo = 0;
+MyAnchor = 0;
+outputBuffer = "";
+polarityFlag = 0;
+
+function runMe(){
+	outputBuffer = "";
+	LengthOne = Number(document.getElementById("field01").value);
+	LengthTwo = Number(document.getElementById("field02").value);
+	if(LengthOne > LengthTwo){
+		mySwitch = LengthTwo;
+		LengthTwo = LengthOne;
+		LengthOne = mySwitch;
+	}
+	theOffset = 0;
+	MyAnchor = document.getElementById("field00").value;
+	if(MyAnchor > 977)
+		theOffset = 875;
+	else
+		theOffset = 1079;
+	theOffset = Math.abs(MyAnchor - theOffset);
+	mySweep = Math.floor(theOffset / LengthTwo);
+//	mySweep = Math.floor(mySweep / 2) * 2;
+//	for(i=mySweep;i-=2;i>0){
+	for(i=mySweep;i-=1;i>0){
+		outputBuffer = outputBuffer + MyAnchor+' '+Math.abs((i*LengthOne)-MyAnchor)+' '+Math.abs((i*LengthTwo)-MyAnchor)+'<br>';
+	}
+	document.getElementById("output00").innerHTML = outputBuffer;
+}
+</script>
+<body>
+<h1>Sweeper</h1>
+<form>
+Anchor: <input type="text" id="field00" value="1057"></input><br>
+Length 1: <input type="text" id="field01" value=""></input><br>
+Length 2: <input type="text" id="field02"value=""></input><br>
+</form>
+<button onClick="runMe()">Click</button>
+<p id="output00"></p>
+</body>
+</html>
