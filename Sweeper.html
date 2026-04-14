@@ -29,9 +29,9 @@ function runMe(){
 		theOffset = 1079;
 	theOffset = Math.abs(MyAnchor - theOffset);
 	mySweep = Math.floor(theOffset / LengthTwo);
-//	mySweep = Math.floor(mySweep / 2) * 2;
-//	for(i=mySweep;i-=2;i>0){
-	for(i=mySweep;i-=1;i>0){
+	mySweep = Math.floor(mySweep / 2) * 2;
+	for(i=mySweep;i-=2;i>0){
+//	for(i=mySweep;i-=1;i>0){
 		outputBuffer = outputBuffer + MyAnchor+' '+Math.abs((i*LengthOne)-MyAnchor)+' '+Math.abs((i*LengthTwo)-MyAnchor)+'<br>';
 	}
 	document.getElementById("output00").innerHTML = outputBuffer;
