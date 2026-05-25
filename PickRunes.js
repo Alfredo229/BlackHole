@@ -39,6 +39,9 @@ switch(MyString){
 	name2 = new Array("Frey, Aries","Ur, Aries","Thorn, Cancer","Os, Cancer","Rad, Balance","Ken, Balance","Gyfu, Capricorn","Wyn, Capricorn",
 		"Hagel, Taurus","Nyd, Taurus","Isa, Leo","Jera, Leo","Eoh, Scorpio","Pethro, Scorpio","Eloh, Aquarius","Sigel, Aquarius",
 		"Tyr, Gemini","Birch, Gemini","Eh, Virgo","Man, Virgo","Lagu, Sagitarius","Ing, Sagitarius","Daeg, Pisces","Odal, Pisces");
+	name2 = new Array("Frey, facts","Ur, reputation","Thorn, negative","Os, positive","Rad, difficult","Ken, simple","Gyfu, bad","Wyn, good",
+		"Hagel, unstable","Nyd, stable","Isa, dead","Jera, alive","Eoh, increase","Pethro, decrease","Eloh, reality","Sigel, dreams",
+		"Tyr, domesticated","Birch, wild","Eh, serious","Man, playing","Lagu, short","Ing, long","Daeg, public","Odal, private");
 	break;
 
 	case "Rock":
