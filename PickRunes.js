@@ -42,6 +42,9 @@ switch(MyString){
 	name2 = new Array("Frey, facts","Ur, reputation","Thorn, negative","Os, positive","Rad, difficult","Ken, simple","Gyfu, bad","Wyn, good",
 		"Hagel, unstable","Nyd, stable","Isa, dead","Jera, alive","Eoh, increase","Pethro, decrease","Eloh, reality","Sigel, dreams",
 		"Tyr, domesticated","Birch, wild","Eh, serious","Man, playing","Lagu, short","Ing, long","Daeg, public","Odal, private");
+	name2 = new Array("Frey, Actions","Ur, Reputation","Thorn, Protest","Os, Compliance","Rad, Complicated","Ken, Simple","Gyfu, Disorganised","Wyn, Functionnal",
+		"Hagel, Troubled","Nyd, Peaceful","Isa, Silent","Jera, Loud","Eoh, Prepare","Pethro, Use","Eloh, Pessimist","Sigel, Optimist",
+		"Tyr, Determined","Birch, Possible","Eh, Topic","Man, Situation","Lagu, Volatile","Ing, Predictable","Daeg, Public","Odal, Private");
 	break;
 
 	case "Rock":
