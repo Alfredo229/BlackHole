@@ -33,6 +33,7 @@ name2 = new Array(
 switch(MyString){
 	case "S":
 	myPath = "Runes\\";
+/*
 	name2 = new Array("Frey","Ur","Thorn","Os","Rad","Ken","Gyfu","Wyn",
 		"Hagel","Nyd","Isa","Jera","Eoh","Pethro","Eloh","Sigel",
 		"Tyr","Birch","Eh","Man","Lagu","Ing","Daeg","Odal");
@@ -45,6 +46,10 @@ switch(MyString){
 	name2 = new Array("Frey, Actions","Ur, Reputation","Thorn, Protest","Os, Compliance","Rad, Complicated","Ken, Simple","Gyfu, Disorganised","Wyn, Functionnal",
 		"Hagel, Troubled","Nyd, Peaceful","Isa, Silent","Jera, Loud","Eoh, Prepare","Pethro, Use","Eloh, Pessimist","Sigel, Optimist",
 		"Tyr, Determined","Birch, Possible","Eh, Topic","Man, Situation","Lagu, Volatile","Ing, Predictable","Daeg, Public","Odal, Private");
+*/
+	name2 = new Array("Frey, Fair","Ur, Abundant","Thorn, Not Equal","Os, Conform","Rad, Effort","Ken, Passive","Gyfu, Imperfect","Wyn, Completed",
+		"Hagel, Adapting","Nyd, Studying","Isa, Silent","Jera, Activity","Eoh, Increase","Pethro, Belongings","Eloh, Pressure","Sigel, Spinning",
+		"Tyr, Legislating","Birch, Freedom","Eh, Meeting","Man, Execution","Lagu, Alone","Ing, Organized","Daeg, Loyalty","Odal, Privacy");
 	break;
 
 	case "Rock":
