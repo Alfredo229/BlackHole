@@ -34,23 +34,20 @@
 </style>
 
 <script>
-function fitSize(){
-/*
-	break;
-	document.getElementById("Navigation").style.height = (window.innerHeight-110) + "px";
-	document.getElementById("contentbox").style.height = (window.innerHeight-110) + "px";
-	document.getElementById("contentbox").style.width = (window.innerWidth-290) + "px";
-*/
-}
+function fitSize(){}
 
-function loadPage(targetname){
-//	document.getElementById("outputFrame").src = targetname;
+function loadPage(targetname){}
+
+function fixSize(){
+	readHeight = window.innerHeight;
+	readHeight -= 150;
+	document.getElementById("resizeTarget").height = readHeight;
 }
 
 </script>
 </head>
 
-<body style="background-image:url(background.jpg);background-repeat: repeat-y; background-position: right top" onLoad="">
+<body style="background-image:url(background.jpg);background-repeat: repeat-y; background-position: right top" onLoad="fixSize()" onResize="fixSize()">
 
 <div style="text-align:center;width:100%;float:top">
 <h1>My Website About Frequency Spirals And Fortune Telling</h1>
@@ -75,7 +72,7 @@ function loadPage(targetname){
 </div>
 
 <div class="myFrame">
-<iframe name="outputFrame" width="100%" height="650"></iframe>
+<iframe id="resizeTarget" name="outputFrame" width="100%" height="650"></iframe>
 </div>
 
 </div>
