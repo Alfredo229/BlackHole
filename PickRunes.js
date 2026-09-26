@@ -282,6 +282,14 @@ break;
    myPath = "Pictures32\\";
    break;
 
+  case "P34":
+   myPath = "Pictures33\\";
+   break;
+
+  case "P35":
+   myPath = "Pictures34\\";
+   break;
+
   default:
    alert("other");
   break;
