@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>
+Rune reading with reversed characters
+</title>
+</head>
+<script>
+	pulled = new Array(48);
+	index = 0;
+	for(i=0;i<48;i++){
+		pulled[i] = 99;
+	}
+
+	function reset(){
+		index = 0;
+		for(i=0;i<48;i++){
+			pulled[i] = 99;
+		}
+		for(i=0;i<5;i++){
+			document.getElementById("picture"+i).src = 'default.jpg';
+		}
+	}
+
+	function pullOne(){
+		if(index > 4)
+			return;
+		newPull = Math.floor(Math.random() * (48 - index));
+//		newPull = Math.floor(Math.random() * (5 - index));
+		skipLength = 0;
+		console.log('Raw '+newPull);
+
+//Doesn't cover the end of loop matches
+		for(i=0;i<=newPull;i++){
+			if(pulled[i] == 1){
+				console.log('Duplicate '+i);
+				newPull++;
+			}
+//Fix here
+//Reding index i, is pushed ahead on matches, covering the appropriate section
+
+		}
+		newPull += skipLength;
+		pulled[newPull] = 1;
+		pushRune(newPull);
+	}
+
+	function pushRune(myResult){
+		document.getElementById("picture"+index).src = myResult+'.jpg';
+		console.log('result '+myResult);
+		index++;
+	}
+</script>
+<body>
+	<div style="float:top;text-align:center;width:50%;margin:auto">
+	<h1>Rune reading with reversed characters</h1>
+	<h2>Since i made a new set of cards, i use reversed characters. My current webpages don't support that and this is the current fix.</h2>
+	<button onclick="pullOne()">Click</button>
+	<button onclick="reset()">Reset</button>
+	<br><br><br>
+	</div>
+	<div style="float:top;text-align:center">
+	<img id="picture0" src="default.jpg"></img>
+	<img id="picture1" src="default.jpg"></img>
+	<img id="picture2" src="default.jpg"></img>
+	</div>
+	<div style="float:top;text-align:center">
+	<img id="picture3" src="default.jpg"></img>
+	<img id="picture4" src="default.jpg"></img>
+	</div>
+</body>
+</html>
