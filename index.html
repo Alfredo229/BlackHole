@@ -8,15 +8,19 @@
 .container{
 	display:grid;
 	grid-template-columns: 20% auto;
+	width:30%;
 }
 
 .myFrame{
+	float:right;
+	justify-content:center;
 	grid-row: 1 / span 2;
 	grid-column-start:2;
 	grid-column-stop:2;
 }
 
 .normal1{
+	float:top;
 	height:150px;
 	grid-row-start: 1;
 	grid-row-stop: 1;
@@ -25,6 +29,8 @@
 }
 
 .normal2{
+	float:top;
+	heigth:300px;
 	grid-row-start: 2;
 	grid-row-stop: 2;
 	grid-column-start:1;
@@ -47,16 +53,16 @@ function fixSize(){
 </script>
 </head>
 
-<body style="background-image:url(background.jpg);background-repeat: repeat-y; background-position: right top" onLoad="fixSize()" onResize="fixSize()">
+<body style="background-image:url(background.jpg);background-repeat: repeat-y; background-position: right top" onLoad="//fixSize()" onResize="//fixSize()">
 
 <div style="text-align:center;width:100%;float:top">
 <h1>My Website About Frequency Spirals And Fortune Telling</h1>
 <h2>All rights reserved</h2>
 </div>
 
-<div class="container">
+<div style="height:80%;width:25%;">
 
-<div class="normal1" width="350">
+<div style="float:left;">
 <a target="navigation" href="fortuneTelling.html">Fortune Telling</a><br>
 <a target="navigation" href="videoGames.html">Video Games</a><br>
 <a target="outputFrame" href="Gallery/Gallery.html">Random pictures</a><br>
@@ -67,14 +73,14 @@ function fixSize(){
 <a target="navigation" href="abstractNavigation.html">Abstract</a><br>
 </div>
 
-<div class="normal2">
-<iframe src="" height="350" name="navigation"></iframe>
+<div style="float:left">
+<iframe src="" height="300" name="navigation"></iframe>
 </div>
 
-<div class="myFrame">
-<iframe id="resizeTarget" name="outputFrame" width="100%" height="650"></iframe>
 </div>
 
+<div style="">
+<iframe id="resizeTarget" name="outputFrame" width="800" height="600"></iframe>
 </div>
 
 </body>
