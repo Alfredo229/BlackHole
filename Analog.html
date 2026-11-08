@@ -1,0 +1,235 @@
+<html>
+<head>
+<title>Analog Time Travel</title>
+<script>
+//===============================
+//==========FM BAND DATA=========
+//===============================
+
+frequencyList = new Array();
+
+	favoriteList = new Array(925,1073,885,969,893,903,913,919,935,943,951,959,977,985,995,1033,1045,1051,1057,1063);
+
+	//Montreal
+	frequencyList[0] = new Array(885,893,903,913,919,925,935,943,951,959,969,977,985,995,1033,1045,1051,1057,1063,1073);
+
+	//New York
+	frequencyList[1] = new Array(883,887,889,891,895,899,903,907,911,915,923,931,935,939,947,955,963,967,971,979,983,987,995,1003,1007,1011,1019,1027,1035,1043,1051,1059,1067,1075,);
+
+	//Ottawa
+	frequencyList[2] = new Array(885,891,899,907,915,923,927,931,939,945,949,957,965,971,975,979,985,991,997,1003,1011,1017,1025,1033,1041,1047,1053,1061,1069,1079);
+
+	//Quebec city
+	frequencyList[3] = new Array(883,891,909,919,927,933,943,953,981,989,1009,1029,1041,1047,1063,1075);
+
+	//Merged
+	//I have to compute this one. If anything changes in the other lists, i am not making the whole thing again.
+	frequencyList[4] = new Array();
+	frequencyList[5] = new Array();
+
+//===============================
+//==========VARIABLES============
+//===============================
+
+function init(){
+
+//Resets variables
+
+	result = new Array(99,99,99);
+	resultIndexA = new Array(0,0,0);
+	resultIndexB = new Array(0,0,0);
+	resultIndexC = new Array(0,0,0);
+	regionTag = new Array(5,5,5);
+	testString = '';
+	myBrains = 0; 
+	mySeek = 0;
+	gg = 5;
+
+//Gets parmetrers
+//	setRegion(document.getElementById("region00").value);
+	theInput1 = Math.abs(Number(document.getElementById("ratio1").value));
+	theInput2 = Math.abs(Number(document.getElementById("ratio2").value));
+	someRatio = theInput1 / theInput2;
+	if(someRatio > 1)
+		someRatio = 1/someRatio;
+
+//===============================
+//=======GENERAL PROCESSING======
+//===============================
+
+//I'll do 2 stages, add every unique entries then sort the clot. I am not doing this again everything an entry changes.
+
+	foundFlag = 0;
+	Index10 = 0;
+	//scans the 3 regions to be merged
+	for(ca=1;ca<(frequencyList.length-1);ca++){
+		//scans the entries of a region
+		for(qc=0;qc<frequencyList[ca].length;qc++){
+			//scans the output array
+			for(laval=0;laval<=frequencyList[4].length;laval++){
+				//ignores a match, sets a flag at processing
+				if(frequencyList[ca][qc]==frequencyList[4][laval]){
+					foundFlag = 1;
+				}
+			}
+			if(foundFlag==0){
+				frequencyList[4][Index10] = frequencyList[ca][qc];
+				Index10++;
+			}
+			foundFlag = 0;
+		}
+	}
+
+//Good
+//console.log('Length: '+frequencyList[4].length);
+
+//Sorts the clot
+//Thank you internet
+	frequencyList[4].sort((a, b) => a - b);
+
+//Good
+//for(ff=0;ff<frequencyList[4].length;ff++)
+//	console.log(frequencyList[4][ff]);
+
+
+	for(chemin = 4; chemin >= 0 ; chemin--){
+		processing(chemin);
+	}
+}
+
+//===============================
+//========MAIN PROCESSING========
+//===============================
+
+function processing(theWord){
+//Scans for the axis
+	gg = theWord;
+	for(f=favoriteList.length; f > 0; f--){
+		pointA = favoriteList[f-1];
+
+//Scans for offset A
+		for(i=0; i < frequencyList[gg].length; i++){
+			if(frequencyList[gg][i] != pointA){
+				offsetA = Math.abs(pointA - frequencyList[gg][i]);
+
+//Scans for offset B, lower
+				for(x=0; x < i; x++){
+					if(frequencyList[gg][x] < pointA && frequencyList[gg][i] < pointA){
+						offsetB = Math.abs(pointA - frequencyList[gg][x]);
+						if(offsetA < offsetB)
+							calculatedRatio = offsetA / offsetB;
+						else
+							calculatedRatio = offsetB / offsetA;
+						calculatedOffset = Math.abs(someRatio - calculatedRatio);
+						validate();
+					}
+				}
+
+//Scans for offset B, higher
+				for(x=i; x < frequencyList[gg].length; x++){
+					if(frequencyList[gg][x] > pointA && frequencyList[gg][i] > pointA){
+						offsetB = Math.abs(pointA - frequencyList[gg][x]);
+						if(offsetA < offsetB)
+							calculatedRatio = offsetA / offsetB;
+						else
+							calculatedRatio = offsetB / offsetA;
+						calculatedOffset = Math.abs(someRatio - calculatedRatio);
+						validate();
+					}
+				}
+			}
+		}
+	}
+}
+
+//===============================
+//===========VALIDATING==========
+//===============================
+
+function validate(){
+	if(calculatedOffset <= result[0] && (calculatedOffset == 0 && favoriteList[resultIndexC[0]] != pointA)){
+		//moves the object up one on the precision scale
+		for(g=2; g>0; g--){
+			result[g] = result[g-1]
+			resultIndexA[g] = resultIndexA[g-1];
+			resultIndexB[g] = resultIndexB[g-1];
+			resultIndexC[g] = resultIndexC[g-1];
+			regionTag[g] = regionTag[g-1];
+		}
+
+//Assigns the new value
+		result[0] = calculatedOffset;
+		resultIndexA[0] = x;
+		resultIndexB[0] = i;
+		resultIndexC[0] = f-1;
+		regionTag[0] = gg;
+	}
+
+//Updates the results
+	resultString = '';
+	frequencyA = '';
+	frequencyB = '';
+	frequencyC = '';
+	regionResultList = '';
+	for(g=0; g<3; g++){
+		resultString += result[g] + ' ';
+		frequencyA += frequencyList[regionTag[g]][resultIndexA[g]] + ' ';
+		frequencyB += frequencyList[regionTag[g]][resultIndexB[g]] + ' ';
+		frequencyC += favoriteList[resultIndexC[g]] + ' ';
+		regionResultList += regionTag[g] + ' ';
+	}
+	document.getElementById("mainOutput1").innerHTML = result[0];
+	document.getElementById("mainOutput2").innerHTML = result[1];
+	document.getElementById("mainOutput3").innerHTML = result[2];
+	document.getElementById("mainOutput4").innerHTML = frequencyA;
+	document.getElementById("mainOutput5").innerHTML = frequencyB;
+	document.getElementById("mainOutput6").innerHTML = frequencyC;
+	document.getElementById("mainOutput7").innerHTML = regionResultList;
+}
+</script>
+
+
+<body>
+<h1>Priciple is it scans the FM band for a triangle matching the input ratio.</h1>
+<h2>Doing so, it uses the radio area of Montreal, Montreal and 1 neighbor or Montreal and mixed all neighbor.</h2>
+<h3>I cover a lot of combinations.</h3>
+<div style="margin:auto">
+<form>
+<p>Input ratio here</p>
+<input type="text" value="" id="ratio1"></input>
+<input type="text" value="" id="ratio2"></input>
+<br>
+<input type="button" value="Calculate" onClick="init()"></input>
+</form>
+<table><tr>
+<td>Quality 1</td>
+<td><p id="mainOutput1"></p></td>
+
+</tr><tr>
+<td>Quality 2</td>
+<td><p id="mainOutput2"></p></td>
+
+</tr><tr>
+<td>Quality 3</td>
+<td>
+<p id="mainOutput3"></p></td>
+
+</tr><tr>
+<td>Offset 1</td>
+<td><p id="mainOutput4"></p></td>
+
+</tr><tr>
+<td>Offset 2</td>
+<td><p id="mainOutput5"></p></td>
+
+</tr><tr>
+<td>Axis</td>
+<td><p id="mainOutput6"></p></td>
+
+</tr><tr>
+<td>Region Tag</td>
+<td><p id="mainOutput7"></p></td>
+</tr></table>
+</div>
+</body>
+</html>
