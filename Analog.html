@@ -13,14 +13,14 @@ frequencyList = new Array();
 	//Montreal
 	frequencyList[0] = new Array(885,893,903,913,919,925,935,943,951,959,969,977,985,995,1033,1045,1051,1057,1063,1073);
 
-	//New York
-	frequencyList[1] = new Array(883,887,889,891,895,899,903,907,911,915,923,931,935,939,947,955,963,967,971,979,983,987,995,1003,1007,1011,1019,1027,1035,1043,1051,1059,1067,1075,);
-
-	//Ottawa
-	frequencyList[2] = new Array(885,891,899,907,915,923,927,931,939,945,949,957,965,971,975,979,985,991,997,1003,1011,1017,1025,1033,1041,1047,1053,1061,1069,1079);
-
 	//Quebec city
 	frequencyList[3] = new Array(883,891,909,919,927,933,943,953,981,989,1009,1029,1041,1047,1063,1075);
+
+	//Ottawa
+	frequencyList[2] = new Array(885,891,899,907,915,931,939,945,949,965,971,979,985,991,997,1003,1017,1025,1033,1041,1047,1053,1061,1069,1079);
+
+	//New York
+	frequencyList[1] = new Array(883,887,889,891,895,899,903,907,911,915,923,931,935,939,947,955,963,967,971,979,983,987,995,1003,1007,1011,1019,1027,1035,1043,1051,1059,1067,1075,);
 
 	//Merged
 	//I have to compute this one. If anything changes in the other lists, i am not making the whole thing again.
@@ -38,7 +38,7 @@ function init(){
 	result = new Array(99,99,99);
 	resultIndexA = new Array(0,0,0);
 	resultIndexB = new Array(0,0,0);
-	resultIndexC = new Array(0,0,0);
+	resultIndexC = new Array(99,99,99);
 	regionTag = new Array(5,5,5);
 	testString = '';
 	myBrains = 0; 
@@ -92,7 +92,9 @@ function init(){
 //	console.log(frequencyList[4][ff]);
 
 
-	for(chemin = 4; chemin >= 0 ; chemin--){
+//	for(chemin = 4; chemin >= 0 ; chemin--){
+//	for(chemin = 3; chemin >= 0 ; chemin--){
+	for(chemin = 0; chemin < 5 ; chemin++){
 		processing(chemin);
 	}
 }
@@ -147,44 +149,64 @@ function processing(theWord){
 //===============================
 
 function validate(){
-	if(calculatedOffset <= result[0] && (calculatedOffset == 0 && favoriteList[resultIndexC[0]] != pointA)){
-		//moves the object up one on the precision scale
-		for(g=2; g>0; g--){
-			result[g] = result[g-1]
-			resultIndexA[g] = resultIndexA[g-1];
-			resultIndexB[g] = resultIndexB[g-1];
-			resultIndexC[g] = resultIndexC[g-1];
-			regionTag[g] = regionTag[g-1];
-		}
+//	if(calculatedOffset <= result[0] && (calculatedOffset == 0 && favoriteList[resultIndexC[0]] != pointA)){
+	if(calculatedOffset <= result[0]){
+		if((favoriteList[resultIndexC[0]] != pointA && resultIndexC[0] > (f-1)) || calculatedOffset < result[0]){
+//moves the object up one on the precision scale
+			for(g=2; g>0; g--){
+				result[g] = result[g-1]
+				resultIndexA[g] = resultIndexA[g-1];
+				resultIndexB[g] = resultIndexB[g-1];
+				resultIndexC[g] = resultIndexC[g-1];
+				regionTag[g] = regionTag[g-1];
+			}
 
 //Assigns the new value
-		result[0] = calculatedOffset;
-		resultIndexA[0] = x;
-		resultIndexB[0] = i;
-		resultIndexC[0] = f-1;
-		regionTag[0] = gg;
-	}
+			result[0] = calculatedOffset;
+			resultIndexA[0] = x;
+			resultIndexB[0] = i;
+			resultIndexC[0] = f-1;
+			regionTag[0] = gg;
+		}
 
 //Updates the results
-	resultString = '';
-	frequencyA = '';
-	frequencyB = '';
-	frequencyC = '';
-	regionResultList = '';
-	for(g=0; g<3; g++){
-		resultString += result[g] + ' ';
-		frequencyA += frequencyList[regionTag[g]][resultIndexA[g]] + ' ';
-		frequencyB += frequencyList[regionTag[g]][resultIndexB[g]] + ' ';
-		frequencyC += favoriteList[resultIndexC[g]] + ' ';
-		regionResultList += regionTag[g] + ' ';
+		resultString = '';
+		frequencyA = '';
+		frequencyB = '';
+		frequencyC = '';
+		regionResultList = '';
+		for(g=0; g<3; g++){
+			resultString += result[g] + ' ';
+			frequencyA += frequencyList[regionTag[g]][resultIndexA[g]] + ' ';
+			frequencyB += frequencyList[regionTag[g]][resultIndexB[g]] + ' ';
+			frequencyC += favoriteList[resultIndexC[g]] + ' ';
+			switch(regionTag[g]){
+				case 0:
+					regionResultList += 'Montreal ';
+					break;
+				case 1:
+					regionResultList += 'Quebec ';
+					break;
+				case 2:
+					regionResultList += 'Ottawa ';
+					break;
+				case 3:
+					regionResultList += 'New York ';
+					break;
+				case 4:
+					regionResultList += 'Mixed ';
+					break;
+				default:
+			}
+		}
+		document.getElementById("mainOutput1").innerHTML = result[0];
+		document.getElementById("mainOutput2").innerHTML = result[1];
+		document.getElementById("mainOutput3").innerHTML = result[2];
+		document.getElementById("mainOutput4").innerHTML = frequencyA;
+		document.getElementById("mainOutput5").innerHTML = frequencyB;
+		document.getElementById("mainOutput6").innerHTML = frequencyC;
+		document.getElementById("mainOutput7").innerHTML = regionResultList;
 	}
-	document.getElementById("mainOutput1").innerHTML = result[0];
-	document.getElementById("mainOutput2").innerHTML = result[1];
-	document.getElementById("mainOutput3").innerHTML = result[2];
-	document.getElementById("mainOutput4").innerHTML = frequencyA;
-	document.getElementById("mainOutput5").innerHTML = frequencyB;
-	document.getElementById("mainOutput6").innerHTML = frequencyC;
-	document.getElementById("mainOutput7").innerHTML = regionResultList;
 }
 </script>
 
