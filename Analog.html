@@ -35,11 +35,11 @@ function init(){
 
 //Resets variables
 
-	result = new Array(99,99,99);
-	resultIndexA = new Array(0,0,0);
-	resultIndexB = new Array(0,0,0);
-	resultIndexC = new Array(99,99,99);
-	regionTag = new Array(5,5,5);
+	result = new Array(99,99,99,99);
+	resultIndexA = new Array(0,0,0,0);
+	resultIndexB = new Array(0,0,0,0);
+	resultIndexC = new Array(99,99,99,99);
+	regionTag = new Array(5,5,5,5);
 	testString = '';
 	myBrains = 0; 
 	mySeek = 0;
@@ -153,7 +153,7 @@ function validate(){
 	if(calculatedOffset <= result[0]){
 		if((favoriteList[resultIndexC[0]] != pointA && resultIndexC[0] > (f-1)) || calculatedOffset < result[0]){
 //moves the object up one on the precision scale
-			for(g=2; g>0; g--){
+			for(g=3; g>0; g--){
 				result[g] = result[g-1]
 				resultIndexA[g] = resultIndexA[g-1];
 				resultIndexB[g] = resultIndexB[g-1];
@@ -175,7 +175,7 @@ function validate(){
 		frequencyB = '';
 		frequencyC = '';
 		regionResultList = '';
-		for(g=0; g<3; g++){
+		for(g=0; g<4; g++){
 			resultString += result[g] + ' ';
 			frequencyA += frequencyList[regionTag[g]][resultIndexA[g]] + ' ';
 			frequencyB += frequencyList[regionTag[g]][resultIndexB[g]] + ' ';

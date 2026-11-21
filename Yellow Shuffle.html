@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Color Spinner</title>
+</head>
+<script>
+//=================================================================================
+
+//It's very meh right now. It's supposed to do 2/3 instead of 1/2. Later if ever.
+
+//=================================================================================
+
+incrementGreen = 16;
+incrementRed = 8;
+cycleGreen = 50;
+cycleRed = 100;
+
+rgbGreen = 32;
+rgbRed = 32;
+flagGreen = 0;
+flagRed = 0;
+
+IDgreen = 0;
+IDred = 0;
+
+function runThis(){
+	moveGreen();
+	moveRed();
+//	rgbMonitor();
+}
+function rgbMonitor(){
+	setTimeout("rgbMonitor()",400);
+	console.log(myString);
+}
+function moveGreen(){
+	IDgreen = setTimeout("moveGreen()",cycleGreen);
+	if(flagGreen == 0){
+		rgbGreen += incrementGreen;
+		if(rgbGreen >= rgbRed){
+			rgbGreen = rgbRed;
+			flagGreen = 1;
+		}
+	}else{
+		rgbGreen -= incrementGreen;
+		if(rgbGreen <= 32){
+			rgbGreen = 32;
+			flagGreen = 0;
+		}
+	}
+	updateColor('green');
+}
+function moveRed(){
+	IDred = setTimeout("moveRed()",cycleRed);
+	if(flagRed == 0){
+		rgbRed += incrementRed;
+		if(rgbRed >= 255){
+			rgbRed = 255;
+			flagRed = 1;
+		}
+	}else{
+		rgbRed -= incrementRed;
+		if(rgbRed <= 32){
+			rgbRed = 32;
+			flagRed = 0;
+		}
+	}
+	updateColor('red');
+}
+function updateColor(myParameter){
+	switch(myParameter){
+		case 'red':
+			redString = '';
+			redString += (rgbRed.toString(16).padStart(2,'0'));
+			redString += (rgbGreen.toString(16).padStart(2,'0'));
+			redString += '00';
+			document.bgColor = redString;
+			break;
+		case 'green':
+			greenString = '';
+			greenString += (rgbRed.toString(16).padStart(2,'0'));
+			greenString += (rgbGreen.toString(16).padStart(2,'0'));
+			greenString += '00';
+			document.bgColor = greenString;
+			break;
+		default:
+	}
+}
+function stopThis(){
+	clearTimeout(IDgreen);
+	clearTimeout(IDred);
+}
+</script>
+<body onLoad="runThis()">
+<button onclick="stopThis()">Stop</button>
+</body>
+</html>
